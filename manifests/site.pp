@@ -54,7 +54,7 @@ Homebrew::Formula <| |> -> Package <| |>
 node default {
   # core modules, needed for most things
   include gcc
-  include git
+  # include git
   include homebrew
   include xquartz
 
@@ -87,10 +87,6 @@ node default {
   # fail if FDE is not enabled
   if $::root_encrypted == 'no' {
     fail('Please enable full disk encryption and try again')
-  }
-
-  package { 'git':
-    ensure => absent
   }
 
   # dotfiles
