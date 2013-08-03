@@ -54,6 +54,7 @@ Homebrew::Formula <| |> -> Package <| |>
 node default {
   # core modules, needed for most things
   include gcc
+  include git
   package { 'hub':
     ensure => absent
   }
