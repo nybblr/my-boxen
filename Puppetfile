@@ -20,7 +20,7 @@ github "boxen",      "3.0.1"
 
 # github "autoconf",   "1.0.0"
 github "gcc",        "2.0.1"
-# github "git",        "1.2.5"
+github "git",        "1.2.5"
 github "homebrew",   "1.4.1"
 github "osx",        "1.5.0"
 github "inifile",    "1.0.0", :repo => "puppetlabs/puppetlabs-inifile"
