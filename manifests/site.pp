@@ -89,12 +89,17 @@ node default {
     fail('Please enable full disk encryption and try again')
   }
 
+  package { 'git':
+    ensure => absent
+  }
+
   # dotfiles
   $home = "/Users/${::boxen_user}"
   $dotfiles_dir = "${home}/.dotfiles"
 
   repository { $dotfiles_dir:
-    source => "${::github_login}/dotfiles"
+    source => "${::github_login}/dotfiles",
+    provider => 'git'
   }
 
   exec { "install dotfiles":
@@ -105,7 +110,4 @@ node default {
     require  => Repository[$dotfiles_dir]
   }
 
-  package { 'git':
-    ensure => absent
-  }
 }
