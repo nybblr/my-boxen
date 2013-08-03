@@ -38,11 +38,7 @@ Repository {
   provider => git,
   extra    => [
     '--recurse-submodules'
-  ],
-  require  => File["${boxen::config::bindir}/boxen-git-credential"],
-  config   => {
-    'credential.helper' => "${boxen::config::bindir}/boxen-git-credential"
-  }
+  ]
 }
 
 Service {
@@ -54,7 +50,7 @@ Homebrew::Formula <| |> -> Package <| |>
 node default {
   # core modules, needed for most things
   include gcc
-  include git
+  # include git
   include homebrew
   include xquartz
 
@@ -94,8 +90,7 @@ node default {
   $dotfiles_dir = "${home}/.dotfiles"
 
   repository { $dotfiles_dir:
-    source => "${::github_login}/dotfiles",
-    provider => 'git'
+    source => "${::github_login}/dotfiles"
   }
 
   exec { "install dotfiles":
@@ -104,6 +99,10 @@ node default {
     provider => shell,
     creates  => "${home}/.zshrc",
     require  => Repository[$dotfiles_dir]
+  }
+
+  package { ["hub", "git"]:
+    ensure => "purged"
   }
 
 }

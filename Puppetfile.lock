@@ -39,6 +39,11 @@ GITHUBTARBALL
     homebrew (1.4.1)
 
 GITHUBTARBALL
+  remote: boxen/puppet-hub
+  specs:
+    hub (1.0.3)
+
+GITHUBTARBALL
   remote: boxen/puppet-iterm2
   specs:
     iterm2 (1.0.3)
@@ -127,6 +132,7 @@ DEPENDENCIES
   git (= 1.2.5)
   handbrake (= 1.0.1)
   homebrew (= 1.4.1)
+  hub (= 1.0.3)
   inifile (= 1.0.0)
   iterm2 (= 1.0.3)
   keyremap4macbook (= 1.0.4)
