@@ -19,7 +19,7 @@ github "boxen",      "3.0.1"
 # some/most of these if you want, but it's not recommended.
 
 # github "autoconf",   "1.0.0"
-# github "dnsmasq",    "1.0.0" # OS independent DNS
+github "dnsmasq",    "1.0.0" # OS independent DNS
 github "gcc",        "2.0.1"
 github "git",        "1.2.5"
 github "homebrew",   "1.4.1"

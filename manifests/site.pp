@@ -53,7 +53,9 @@ Homebrew::Formula <| |> -> Package <| |>
 
 node default {
   # core modules, needed for most things
-  # include dnsmasq
+  package { 'dnsmasq':
+    ensure => absent
+  }
   include gcc
   include git
   include hub
