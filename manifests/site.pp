@@ -86,16 +86,6 @@ node default {
     fail('Please enable full disk encryption and try again')
   }
 
-  # common, useful packages
-  package {
-    [
-      'ack',
-      'findutils',
-      'gnu-tar'
-    ]:
-      ensure => absent
-  }
-
   file { "${boxen::config::srcdir}/our-boxen":
     ensure => link,
     target => $boxen::config::repodir
