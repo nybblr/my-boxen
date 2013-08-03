@@ -85,7 +85,7 @@ node default {
 
   # map capslock to escape
   pckeyboardhack::bind { 'keyboard bindings':
-    mappings => { 'capslock' => 80 }
+    mappings => { 'capslock' => 53 }
   }
 
   include virtualbox
