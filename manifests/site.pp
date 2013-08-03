@@ -58,6 +58,8 @@ node default {
   include homebrew
   include xquartz
 
+  include zsh
+
   include osx::dock::autohide
   include osx::global::expand_save_dialog
   include osx::global::disable_autocorrect
@@ -88,5 +90,21 @@ node default {
 
   file { "${boxen::config::srcdir}/our-boxen":
     ensure => absent
+  }
+
+  # dotfiles
+  $home = "/Users/${::boxen_user}"
+  $dotfiles_dir = "${boxen::config::srcdir}/dotfiles"
+
+  repository { $dotfiles_dir:
+    source => "${::github_user}/dotfiles"
+  }
+
+  exec { "install dotfiles":
+    cwd      => $dotfiles_dir,
+    command  => "./scripts/install.sh",
+    provider => shell,
+    creates  => "${home}/.zshrc",
+    require  => Repository[$dotfiles_dir]
   }
 }

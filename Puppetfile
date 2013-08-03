@@ -36,6 +36,8 @@ github "xquartz",    "1.1.0" # X11 windowing system
 # Optional/custom modules. There are tons available at
 # https://github.com/boxen.
 
+github "zsh",    "1.0.0" # the best shell ever
+
 github "virtualbox",       "1.0.5"
 github "iterm2",           "1.0.3"
 github "textmate",         "1.1.0"
