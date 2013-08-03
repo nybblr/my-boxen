@@ -88,13 +88,9 @@ node default {
     fail('Please enable full disk encryption and try again')
   }
 
-  file { "${boxen::config::srcdir}/our-boxen":
-    ensure => absent
-  }
-
   # dotfiles
   $home = "/Users/${::boxen_user}"
-  $dotfiles_dir = "${boxen::config::srcdir}/dotfiles"
+  $dotfiles_dir = "${home}/.dotfiles"
 
   repository { $dotfiles_dir:
     source => "${::github_user}/dotfiles"
