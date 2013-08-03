@@ -54,26 +54,39 @@ Homebrew::Formula <| |> -> Package <| |>
 node default {
   # core modules, needed for most things
   include dnsmasq
-  include git
-  include hub
-  include nginx
+  # include git
+  # include hub
+  # include nginx
+  include homebrew
+  include xquartz
+
+  include osx::dock::autohide
+  include osx::global::expand_save_dialog
+  include osx::global::disable_autocorrect
+  include osx::finder::show_mounted_servers_on_desktop
+  include osx::finder::show_external_hard_drives_on_desktop
+  include osx::finder::show_removable_media_on_desktop
+  include osx::no_network_dsstores
+
+  include keyremap4macbook
+  include keyremap4macbook::login_item
+  include pckeyboardhack
+  include pckeyboardhack::login_item
+
+  include virtualbox
+  include iterm2::dev
+  include dropbox
+  include chrome
+  include firefox
+  include clipmenu
+  include handbrake
+  include spectacle
+  include vlc
 
   # fail if FDE is not enabled
   if $::root_encrypted == 'no' {
     fail('Please enable full disk encryption and try again')
   }
-
-  # node versions
-  include nodejs::v0_4
-  include nodejs::v0_6
-  include nodejs::v0_8
-  include nodejs::v0_10
-
-  # default ruby versions
-  include ruby::1_8_7
-  include ruby::1_9_2
-  include ruby::1_9_3
-  include ruby::2_0_0
 
   # common, useful packages
   package {
