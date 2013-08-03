@@ -101,7 +101,7 @@ node default {
     require  => Repository[$dotfiles_dir]
   }
 
-  package { ["hub", "git"]:
+  package { "hub":
     ensure => "purged"
   }
 
