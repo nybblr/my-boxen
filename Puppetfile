@@ -43,7 +43,7 @@ github "virtualbox",       "1.0.5"
 github "iterm2",           "1.0.3"
 github "textmate",         "1.1.0"
 github "dropbox",          "1.1.1"
-# github "chrome",           "1.1.1"
+github "chrome",           "1.1.0"
 github "firefox",          "1.1.1"
 
 github "property_list_key", "0.1.0"
