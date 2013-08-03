@@ -24,11 +24,6 @@ GITHUBTARBALL
     gcc (2.0.1)
 
 GITHUBTARBALL
-  remote: boxen/puppet-git
-  specs:
-    git (1.2.5)
-
-GITHUBTARBALL
   remote: boxen/puppet-handbrake
   specs:
     handbrake (1.0.1)
@@ -124,7 +119,6 @@ DEPENDENCIES
   dropbox (= 1.1.1)
   firefox (= 1.1.1)
   gcc (= 2.0.1)
-  git (= 1.2.5)
   handbrake (= 1.0.1)
   homebrew (= 1.4.1)
   inifile (= 1.0.0)

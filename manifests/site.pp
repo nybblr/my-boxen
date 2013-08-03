@@ -54,7 +54,7 @@ Homebrew::Formula <| |> -> Package <| |>
 node default {
   # core modules, needed for most things
   include gcc
-  include git
+  # include git
   include homebrew
   include xquartz
 
@@ -75,6 +75,7 @@ node default {
 
   include virtualbox
   include iterm2::dev
+  include textmate::textmate2::release
   include dropbox
   # include chrome
   include firefox
@@ -102,5 +103,9 @@ node default {
     provider => shell,
     creates  => "${home}/.zshrc",
     require  => Repository[$dotfiles_dir]
+  }
+
+  package { 'git':
+    ensure => absent
   }
 }
