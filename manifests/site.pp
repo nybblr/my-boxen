@@ -85,4 +85,8 @@ node default {
   if $::root_encrypted == 'no' {
     fail('Please enable full disk encryption and try again')
   }
+
+  file { "${boxen::config::srcdir}/our-boxen":
+    ensure => absent
+  }
 }
