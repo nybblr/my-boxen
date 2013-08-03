@@ -128,6 +128,35 @@ describe 'The rubycocoa provider for the property_list_key type' do
     provider.value.should == 8
   end
 
+  it 'should write a real value if an integer value_type is passed' do
+    resource[:value] = '4'
+    resource[:value_type] = :real
+    provider.create
+    provider.value.class.should == Float
+  end
+
+  it 'should write a real value if a float value_type is passed' do
+    resource[:value] = '4.0'
+    resource[:value_type] = :real
+    provider.create
+    provider.value.class.should == Float
+  end
+
+  it 'should set a real value' do
+    resource[:value] = '4'
+    resource[:value_type] = :real
+    provider.create
+    provider.value.should == 4.0
+  end
+
+  it 'should set a float value with value=' do
+    resource[:value] = '4.0'
+    resource[:value_type] = :real
+    provider.create
+    provider.value = '8.0'
+    provider.value.should == 8.0
+  end
+
   it 'should write an array value if an array value_type is passed' do
     resource[:value] = ['array', 'of', 'values']
     resource[:value_type] = :array
@@ -171,4 +200,81 @@ describe 'The rubycocoa provider for the property_list_key type' do
     provider.value = { 'another' => 'hash_value' }
     provider.value.should == { 'another' => 'hash_value' }
   end
+
+  it 'insync? on the value type should return true if a string "is" value matches the "should" value' do
+    resource[:value] = ['string value']
+    provider.create
+    resource.property(:value).insync?('string value').should be_true
+  end
+
+  it 'insync? on the value type should return false if a string "is" value does not match the "should" value' do
+    resource[:value] = ['string value']
+    provider.create
+    resource.property(:value).insync?('bad value').should be_false
+  end
+
+  it 'insync? on the value type should return true if an array "is" value matches the "should" value' do
+    resource[:value] = ['an', 'array', 'value']
+    resource[:value_type] = :array
+    provider.create
+    resource.property(:value).insync?(['an', 'array', 'value']).should be_true
+  end
+
+  it 'insync? on the value type should return false if an array "is" value does not match the "should" value' do
+    resource[:value] = ['an', 'array', 'value']
+    resource[:value_type] = :array
+    provider.create
+    resource.property(:value).insync?(['bad', 'array']).should be_false
+  end
+
+  # It's important to note that in the boolean insync? tests, all values
+  # coming from the Puppet DSL come in as STRING values - so setting
+  # the value with resource[:value] = <value> should ALWAYS contain a
+  # string value or the test doesn't accurately test the model.
+  it 'insync? on the value type should return true if a boolean "is" value matches the "should" value' do
+    resource[:value] = ['true']
+    resource[:value_type] = :boolean
+    provider.create
+    resource.property(:value).insync?(true).should be_true
+  end
+
+  it 'insync? on the value type should return false if a boolean "is" value does not match the "should" value' do
+    resource[:value] = ['true']
+    resource[:value_type] = :boolean
+    provider.create
+    resource.property(:value).insync?(false).should be_false
+  end
+
+  it 'insync? on the value type should return true if a hash "is" value matches the "should" value' do
+    resource[:value] = [{ 'hash' => 'value' }]
+    resource[:value_type] = :hash
+    provider.create
+    resource.property(:value).insync?({ 'hash' => 'value' }).should be_true
+  end
+
+  it 'insync? on the value type should return false if a hash "is" value does not match the "should" value' do
+    resource[:value] = [{ 'hash' => 'value' }]
+    resource[:value_type] = :hash
+    provider.create
+    resource.property(:value).insync?({'bad' => 'hash'}).should be_false
+  end
+
+  # It's important to note that in the integer insync? tests, all values
+  # coming from the Puppet DSL come in as STRING values - so setting
+  # the value with resource[:value] = <value> should ALWAYS contain a
+  # string value or the test doesn't accurately test the model.
+  it 'insync? on the value type should return true if an integer "is" value matches the "should" value' do
+    resource[:value] = ['1']
+    resource[:value_type] = :integer
+    provider.create
+    resource.property(:value).insync?(1).should be_true
+  end
+
+  it 'insync? on the value type should return false if an integer "is" value does not match the "should" value' do
+    resource[:value] = ['11']
+    resource[:value_type] = :integer
+    provider.create
+    resource.property(:value).insync?(33).should be_false
+  end
 end
+

@@ -13,7 +13,7 @@ Puppet::Type.type(:property_list_key).provide(:rubycocoa) do
   def exists?
     return false unless File.file? resource[:path]
     if resource[:path].nil? or resource[:key].nil?
-      fail("The 'key' and 'domain' parameters are required for the property_list_key type")
+      fail("The 'key' and 'path' parameters are required for the property_list_key type")
     end
 
     plist = read_plist_file(resource[:path])
@@ -36,6 +36,8 @@ Puppet::Type.type(:property_list_key).provide(:rubycocoa) do
     case resource[:value_type]
     when :integer
       plist_value = Integer(resource[:value].first)
+    when :real
+      plist_value = Float(resource[:value].first)
     when :boolean
       if resource[:value].to_s =~ /false/i
         plist_value = false
@@ -82,7 +84,9 @@ Puppet::Type.type(:property_list_key).provide(:rubycocoa) do
     case resource[:value_type]
     when :integer
       plist[resource[:key]] = Integer(item_value.first)
-    when :array, :hash
+    when :real
+      plist[resource[:key]] = Float(item_value.first)
+    when :array
       plist[resource[:key]] = item_value
     when :boolean
       if item_value.to_s =~ /false/i

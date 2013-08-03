@@ -46,7 +46,7 @@ github "dropbox",          "1.1.1"
 github "chrome",           "1.1.0"
 github "firefox",          "1.1.1"
 
-github "property_list_key", "0.1.0"
+github "property_list_key", "0.1.1", :repo => "nybblr/puppet-property_list_key"
 github "pckeyboardhack",    "1.0.5", :repo => "smh/puppet-pckeyboardhack"
 github "keyremap4macbook",  "1.0.4"
 github "clipmenu",          "1.0.0"
