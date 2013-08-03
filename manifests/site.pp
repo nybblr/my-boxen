@@ -72,7 +72,7 @@ node default {
   include iterm2::dev
   include textmate::textmate2::release
   include dropbox
-  # include chrome
+  include chrome
   include firefox
   include clipmenu
   include handbrake
