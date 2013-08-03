@@ -53,13 +53,11 @@ Homebrew::Formula <| |> -> Package <| |>
 
 node default {
   # core modules, needed for most things
-  package { 'dnsmasq':
+  include gcc
+  include hub
+  package { 'hub':
     ensure => absent
   }
-  include gcc
-  include git
-  include hub
-  # include nginx
   include homebrew
   include xquartz
 
