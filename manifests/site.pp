@@ -65,8 +65,28 @@ node default {
 
   include keyremap4macbook
   include keyremap4macbook::login_item
+
+  # set key repeat timeouts
+  keyremap4macbook::set{ 'repeat.consumer_initial_wait':
+    value => '200'
+  }
+  keyremap4macbook::set{ 'repeat.consumer_wait':
+    value => '50'
+  }
+  keyremap4macbook::set{ 'repeat.initial_wait':
+    value => '100'
+  }
+  keyremap4macbook::set{ 'repeat.wait':
+    value => '40'
+  }
+
   include pckeyboardhack
   include pckeyboardhack::login_item
+
+  # map capslock to escape
+  pckeyboardhack::bind { 'keyboard bindings':
+    mappings => { 'capslock' => 80 }
+  }
 
   include virtualbox
   include iterm2::dev
