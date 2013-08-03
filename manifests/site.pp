@@ -55,9 +55,6 @@ node default {
   # core modules, needed for most things
   include gcc
   include git
-  package { 'hub':
-    ensure => absent
-  }
   include homebrew
   include xquartz
 
@@ -96,6 +93,7 @@ node default {
       'findutils',
       'gnu-tar'
     ]:
+      ensure => absent
   }
 
   file { "${boxen::config::srcdir}/our-boxen":
