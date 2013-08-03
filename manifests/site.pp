@@ -77,7 +77,7 @@ node default {
   include virtualbox
   include iterm2::dev
   include dropbox
-  include chrome
+  # include chrome
   include firefox
   include clipmenu
   include handbrake
