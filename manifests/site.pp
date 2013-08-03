@@ -93,7 +93,7 @@ node default {
   $dotfiles_dir = "${home}/.dotfiles"
 
   repository { $dotfiles_dir:
-    source => "${::github_user}/dotfiles"
+    source => "${::github_login}/dotfiles"
   }
 
   exec { "install dotfiles":
