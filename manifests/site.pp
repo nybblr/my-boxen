@@ -54,7 +54,7 @@ Homebrew::Formula <| |> -> Package <| |>
 node default {
   # core modules, needed for most things
   include gcc
-  # include git
+  include git
   include homebrew
   include xquartz
 
