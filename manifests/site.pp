@@ -100,9 +100,4 @@ node default {
     creates  => "${home}/.zshrc",
     require  => Repository[$dotfiles_dir]
   }
-
-  package { "hub":
-    ensure => "purged"
-  }
-
 }
