@@ -11,7 +11,7 @@ class boxen::config {
   $configdir         = "${home}/config"
   $datadir           = "${home}/data"
   $envdir            = "${home}/env.d"
-  $homebrewdir       = "${home}/homebrew"
+  $homebrewdir       = "/usr/local"
   $logdir            = "${home}/log"
   $repodir           = $::boxen_repodir
   $reponame          = $::boxen_reponame
