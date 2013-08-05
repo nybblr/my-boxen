@@ -34,11 +34,6 @@ GITHUBTARBALL
     handbrake (1.0.1)
 
 GITHUBTARBALL
-  remote: boxen/puppet-homebrew
-  specs:
-    homebrew (1.4.1)
-
-GITHUBTARBALL
   remote: boxen/puppet-iterm2
   specs:
     iterm2 (1.0.3)
@@ -97,6 +92,11 @@ GITHUBTARBALL
   remote: boxen/puppet-zsh
   specs:
     zsh (1.0.0)
+
+GITHUBTARBALL
+  remote: nybblr/puppet-homebrew
+  specs:
+    homebrew (1.4.1)
 
 GITHUBTARBALL
   remote: nybblr/puppet-property_list_key
